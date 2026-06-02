@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sublime Scales | Business Automation & GHL Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --neon-blue: #00c8ff;
+    --neon-purple: #a855f7;
+    --neon-pink: #f72585;
+    --neon-gold: #ffd166;
+    --dark-bg: #050818;
+    --dark-surface: #0a1128;
+    --dark-card: #0d1535;
+    --dark-border: rgba(0,200,255,0.15);
+    --text-primary: #e8f4ff;
+    --text-muted: #7a9ab8;
+    --gradient-primary: linear-gradient(135deg, #00c8ff, #a855f7);
+    --gradient-cta: linear-gradient(135deg, #a855f7, #f72585);
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark-bg);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── GRID BG ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,200,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,200,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(5,8,24,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--dark-border);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.08em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--neon-blue); }
+
+  .nav-cta {
+    background: var(--gradient-primary);
+    color: #050818 !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.06em !important;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 5rem;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 500px;
+    background: radial-gradient(ellipse at center, rgba(168,85,247,0.18) 0%, rgba(0,200,255,0.08) 50%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0,200,255,0.08);
+    border: 1px solid rgba(0,200,255,0.25);
+    border-radius: 100px;
+    padding: 0.35rem 1rem;
+    font-size: 0.78rem;
+    color: var(--neon-blue);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.6s ease both;
+  }
+
+  .hero-badge span { width: 6px; height: 6px; background: var(--neon-blue); border-radius: 50%; animation: pulse 2s infinite; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    animation: fadeInUp 0.7s 0.1s ease both;
+  }
+
+  .hero h1 .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 540px;
+    margin: 0 auto 2.5rem;
+    animation: fadeInUp 0.7s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.7s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--gradient-cta);
+    color: #fff;
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--neon-blue);
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    border: 1px solid rgba(0,200,255,0.35);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-secondary:hover { background: rgba(0,200,255,0.07); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    margin-top: 4rem;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.7s 0.4s ease both;
+  }
+
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* ── SECTION COMMONS ── */
+  section { position: relative; z-index: 1; }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--neon-blue);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    color: var(--text-muted);
+    max-width: 520px;
+    font-size: 1.05rem;
+    margin-bottom: 3rem;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-bg {
+    background: var(--dark-surface);
+    border-top: 1px solid var(--dark-border);
+    border-bottom: 1px solid var(--dark-border);
+  }
+
+  .flow {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+  }
+
+  .flow-step {
+    flex: 1;
+    min-width: 160px;
+    max-width: 200px;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    position: relative;
+  }
+
+  .flow-step::after {
+    content: '→';
+    position: absolute;
+    right: -12px;
+    top: 2.5rem;
+    color: var(--neon-blue);
+    font-size: 1.2rem;
+    opacity: 0.5;
+  }
+
+  .flow-step:last-child::after { display: none; }
+
+  .flow-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(0,200,255,0.08);
+    border: 1px solid rgba(0,200,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.6rem;
+  }
+
+  .flow-step h4 {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.4rem;
+    color: var(--neon-blue);
+  }
+
+  .flow-step p { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .service-card:hover {
+    border-color: rgba(0,200,255,0.35);
+    transform: translateY(-4px);
+  }
+  .service-card:hover::before { opacity: 1; }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .icon-blue { background: rgba(0,200,255,0.1); }
+  .icon-purple { background: rgba(168,85,247,0.12); }
+  .icon-pink { background: rgba(247,37,133,0.1); }
+  .icon-gold { background: rgba(255,209,102,0.1); }
+
+  .service-card h3 {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.6rem;
+    color: var(--text-primary);
+  }
+
+  .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+  .service-tag {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--neon-blue);
+    opacity: 0.7;
+  }
+
+  /* ── RESULTS / SOCIAL PROOF ── */
+  .results-bg {
+    background: var(--dark-surface);
+    border-top: 1px solid var(--dark-border);
+    border-bottom: 1px solid var(--dark-border);
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .result-card {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: 8px;
+    padding: 1.75rem;
+    text-align: center;
+  }
+
+  .result-num {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .result-label { font-size: 0.85rem; color: var(--text-muted); }
+
+  .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+
+  .testimonial {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: 8px;
+    padding: 1.75rem;
+  }
+
+  .testimonial-stars { color: var(--neon-gold); font-size: 0.9rem; margin-bottom: 0.75rem; }
+
+  .testimonial p { font-size: 0.9rem; color: var(--text-muted); font-style: italic; margin-bottom: 1.1rem; line-height: 1.65; }
+
+  .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+
+  .author-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #050818;
+  }
+
+  .author-name { font-size: 0.85rem; font-weight: 600; }
+  .author-biz { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* ── LEAD CAPTURE ── */
+  .lead-section { text-align: center; }
+
+  .lead-card {
+    background: var(--dark-card);
+    border: 1px solid rgba(168,85,247,0.25);
+    border-radius: 12px;
+    padding: 3.5rem 2.5rem;
+    max-width: 660px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lead-card::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 400px; height: 200px;
+    background: radial-gradient(ellipse, rgba(168,85,247,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .lead-card h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .lead-card > p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: left;
+  }
+
+  .form-field label { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; letter-spacing: 0.04em; }
+
+  .form-field input,
+  .form-field select {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,200,255,0.15);
+    border-radius: 4px;
+    padding: 0.65rem 0.9rem;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .form-field input::placeholder { color: rgba(122,154,184,0.5); }
+
+  .form-field input:focus,
+  .form-field select:focus { border-color: rgba(0,200,255,0.45); }
+
+  .form-field select option { background: var(--dark-card); }
+
+  .form-submit {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.95rem;
+    background: var(--gradient-cta);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .form-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  .form-disclaimer { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.75rem; opacity: 0.6; }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--dark-border);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+
+  footer p { font-size: 0.8rem; color: var(--text-muted); }
+
+  .footer-links { display: flex; gap: 2rem; justify-content: center; margin: 1rem 0; flex-wrap: wrap; }
+  .footer-links a { font-size: 0.82rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--neon-blue); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── SUCCESS STATE ── */
+  .success-msg {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    text-align: center;
+  }
+  .success-msg.show { display: flex; }
+  .success-icon {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: rgba(0,200,255,0.1);
+    border: 2px solid var(--neon-blue);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+    .flow-step::after { display: none; }
+    .hero-stats { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SUBLIME SCALES</div>
+  <ul class="nav-links">
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#book" class="nav-cta">Book a Call</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge"><span></span> Business Automation & GHL Agency</div>
+  <h1>Scale Your Business<br/><span class="gradient-text">On Autopilot</span></h1>
+  <p>We build and automate your entire sales pipeline — from lead capture to booked appointments — using GoHighLevel so you can focus on closing deals, not chasing them.</p>
+  <div class="hero-actions">
+    <a href="#book" class="btn-primary">Book a Free Strategy Call</a>
+    <a href="#services" class="btn-secondary">See What We Do</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">3x</div><div class="stat-label">Avg. Lead Increase</div></div>
+    <div class="stat"><div class="stat-num">48h</div><div class="stat-label">Setup Time</div></div>
+    <div class="stat"><div class="stat-num">90%</div><div class="stat-label">Less Manual Work</div></div>
+    <div class="stat"><div class="stat-num">200+</div><div class="stat-label">Businesses Automated</div></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-bg" id="how-it-works">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">The Process</p>
+      <h2 class="section-title">How We Grow Your Business</h2>
+      <p class="section-sub">A streamlined automation pipeline that works around the clock — capturing leads while you sleep.</p>
+    </div>
+    <div class="flow reveal">
+      <div class="flow-step">
+        <div class="flow-icon">📥</div>
+        <h4>Lead Capture</h4>
+        <p>Email, social media, and ads funnel into one unified system</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">🔗</div>
+        <h4>CRM Sync</h4>
+        <p>Every lead is automatically organized in your GHL CRM</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">📅</div>
+        <h4>Appointment Booking</h4>
+        <p>Smart scheduling sends leads straight to your calendar</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">⚡</div>
+        <h4>Follow-up Sequences</h4>
+        <p>Automated nurture campaigns keep prospects warm</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">🚀</div>
+        <h4>Growth</h4>
+        <p>Consistent, compounding revenue from a fully automated system</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">What We Build</p>
+      <h2 class="section-title">Our Core Services</h2>
+      <p class="section-sub">Everything you need to automate your sales process, built and managed inside GoHighLevel.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon icon-blue">🔧</div>
+        <h3>GHL Setup & Build-Out</h3>
+        <p>Complete GoHighLevel account configuration — sub-accounts, pipelines, calendars, and all your core automations built from scratch or optimized.</p>
+        <span class="service-tag">GoHighLevel</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon icon-purple">🤖</div>
+        <h3>Automation & Workflows</h3>
+        <p>Custom multi-step workflows triggered by leads, form submissions, appointment status, and more. We eliminate manual follow-up entirely.</p>
+        <span class="service-tag">Automation</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon icon-pink">🎯</div>
+        <h3>Lead Generation Funnels</h3>
+        <p>High-converting landing pages, opt-in funnels, and ad integrations designed to pull in qualified leads from Facebook, Instagram, and Google.</p>
+        <span class="service-tag">Lead Gen</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon icon-gold">📧</div>
+        <h3>Email & SMS Campaigns</h3>
+        <p>Nurture sequences, re-engagement campaigns, and broadcast messaging that keeps your audience warm and ready to buy.</p>
+        <span class="service-tag">Campaigns</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon icon-blue">📊</div>
+        <h3>CRM & Pipeline Management</h3>
+        <p>Organized sales pipelines with custom stages, deal tracking, and automatic contact management so nothing slips through the cracks.</p>
+        <span class="service-tag">CRM</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon icon-purple">🔁</div>
+        <h3>White-Label GHL Reselling</h3>
+        <p>Launch your own SaaS under your brand. We set up your white-label GHL agency, onboarding flows, and client sub-accounts end-to-end.</p>
+        <span class="service-tag">White Label</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results-bg" id="results">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Proof of Work</p>
+      <h2 class="section-title">Results That Speak</h2>
+      <p class="section-sub">Real outcomes from real businesses we've automated and scaled.</p>
+    </div>
+    <div class="results-grid reveal">
+      <div class="result-card">
+        <div class="result-num">312%</div>
+        <div class="result-label">Average ROI in 90 Days</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">4.8×</div>
+        <div class="result-label">Lead-to-Appointment Rate</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">$2.1M</div>
+        <div class="result-label">Revenue Generated for Clients</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">48h</div>
+        <div class="result-label">Average Onboarding Time</div>
+      </div>
+    </div>
+    <div class="testimonials">
+      <div class="testimonial reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"Sublime Scales completely transformed how we handle leads. We went from manually chasing every contact to having a fully automated system that books appointments while we sleep. Absolute game changer."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">JR</div>
+          <div><div class="author-name">James R.</div><div class="author-biz">Real Estate Investor</div></div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"Within two weeks of going live we had 3× our normal appointment volume. Their GHL setup is dialed in — every workflow, every follow-up sequence is exactly what we needed to scale fast."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">ML</div>
+          <div><div class="author-name">Maria L.</div><div class="author-biz">Medical Spa Owner</div></div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"I was spending 3 hours a day on follow-ups. Now that's zero. Sublime Scales built an automation that handles everything — and my closing rate actually went up because I'm only talking to warm leads."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">DK</div>
+          <div><div class="author-name">Derek K.</div><div class="author-biz">Insurance Agency</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD CAPTURE / BOOK -->
+<section id="book">
+  <div class="section-inner lead-section">
+    <div class="reveal">
+      <p class="section-label">Get Started</p>
+      <h2 class="section-title">Book Your Free Strategy Call</h2>
+      <p class="section-sub" style="margin: 0 auto 3rem;">Tell us about your business and we'll show you exactly how we can automate your sales process in 48 hours.</p>
+    </div>
+    <div class="lead-card reveal">
+      <h2>Let's Build Your<br/><span style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Growth Machine</span></h2>
+      <p>No obligation. 30 minutes. Walk away with a custom automation blueprint for your business.</p>
+
+      <div id="lead-form">
+        <div class="form-row">
+          <div class="form-field">
+            <label>First Name</label>
+            <input type="text" id="fname" placeholder="John" />
+          </div>
+          <div class="form-field">
+            <label>Last Name</label>
+            <input type="text" id="lname" placeholder="Smith" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Email Address</label>
+            <input type="email" id="email" placeholder="john@yourbusiness.com" />
+          </div>
+          <div class="form-field">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" placeholder="(555) 000-0000" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Business Name</label>
+            <input type="text" id="biz" placeholder="Your Business LLC" />
+          </div>
+          <div class="form-field">
+            <label>Monthly Revenue</label>
+            <select id="revenue">
+              <option value="" disabled selected>Select range</option>
+              <option>Under $5,000/mo</option>
+              <option>$5,000 – $20,000/mo</option>
+              <option>$20,000 – $50,000/mo</option>
+              <option>$50,000 – $100,000/mo</option>
+              <option>$100,000+/mo</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field" style="margin-bottom: 1rem;">
+          <label>What's Your Biggest Challenge Right Now?</label>
+          <select id="challenge">
+            <option value="" disabled selected>Select a challenge</option>
+            <option>Not enough leads coming in</option>
+            <option>Leads aren't converting to appointments</option>
+            <option>Too much manual follow-up work</option>
+            <option>I need a full GHL setup</option>
+            <option>I want to start a white-label agency</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <button class="form-submit" onclick="submitForm()">CLAIM MY FREE STRATEGY CALL →</button>
+        <p class="form-disclaimer">🔒 Your info is 100% private. No spam, ever. We'll reach out within 24 hours to confirm your call time.</p>
+      </div>
+
+      <div class="success-msg" id="success-msg">
+        <div class="success-icon">✓</div>
+        <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 700;">You're All Set!</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Thanks for reaching out. A member of the Sublime Scales team will contact you within 24 hours to confirm your strategy call. Get ready to scale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">SUBLIME SCALES</div>
+  <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.25rem;">Business Automation | GHL Agency</p>
+  <div class="footer-links">
+    <a href="#how-it-works">How It Works</a>
+    <a href="#services">Services</a>
+    <a href="#results">Results</a>
+    <a href="#book">Book a Call</a>
+  </div>
+  <p>&copy; 2025 Sublime Scales. All rights reserved.</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  function submitForm() {
+    const fields = ['fname','lname','email','phone','biz'];
+    const vals = fields.map(id => document.getElementById(id).value.trim());
+    if (vals.some(v => !v)) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRe.test(vals[2])) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    document.getElementById('lead-form').style.display = 'none';
+    document.getElementById('success-msg').classList.add('show');
+  }
+</script>
+</body>
+</html>
